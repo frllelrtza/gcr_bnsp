@@ -45,7 +45,7 @@
           <li><a href="#hero" class="active">Beranda<br></a></li>
           <li><a href="#values">Fitur</a></li>
           <li><a href="#faq">Pertanyaan</a></li>
-          <li><a href="#portfolio">Pegawai</a></li>
+          <li><a href="#team">Pegawai</a></li>
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

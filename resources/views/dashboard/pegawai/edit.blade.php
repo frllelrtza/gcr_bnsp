@@ -15,82 +15,47 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="pegawaiEditForm" method="POST" action="{{ route('pegawai.update', $pegawai->id) }}" enctype="multipart/form-data">
+                <form id="pegawaiEditForm_{{ $pegawai->id }}" method="POST" action="{{ route('pegawai.update', $pegawai->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label for="nama">Nama Pegawai</label>
-                        <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama', $pegawai->nama) }}" placeholder="Masukkan Nama Pegawai">
-                        
-                        @error('nama')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <label for="nama_{{ $pegawai->id }}">Nama Pegawai</label>
+                        <input type="text" class="form-control" id="nama_{{ $pegawai->id }}" name="nama" value="{{ old('nama', $pegawai->nama) }}" placeholder="Masukkan Nama Pegawai">
+                        <div class="invalid-feedback" id="namaError_{{ $pegawai->id }}"></div>
                     </div>
                     <div class="form-group">
-                        <label for="jabatan">Jabatan</label>
-                        <input type="text" class="form-control @error('jabatan') is-invalid @enderror" name="jabatan" value="{{ old('jabatan', $pegawai->jabatan) }}" placeholder="Masukkan Jabatan">
-                        
-                        @error('jabatan')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <label for="jabatan_{{ $pegawai->id }}">Jabatan</label>
+                        <input type="text" class="form-control" id="jabatan_{{ $pegawai->id }}" name="jabatan" value="{{ old('jabatan', $pegawai->jabatan) }}" placeholder="Masukkan Jabatan">
+                        <div class="invalid-feedback" id="jabatanError_{{ $pegawai->id }}"></div>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $pegawai->email) }}" placeholder="Masukkan Email">
-                        
-                        @error('email')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <label for="email_{{ $pegawai->id }}">Email</label>
+                        <input type="email" class="form-control" id="email_{{ $pegawai->id }}" name="email" value="{{ old('email', $pegawai->email) }}" placeholder="Masukkan Email">
+                        <div class="invalid-feedback" id="emailError_{{ $pegawai->id }}"></div>
                     </div>
                     <div class="form-group">
-                        <label for="alamat">Alamat</label>
-                        <textarea class="form-control @error('alamat') is-invalid @enderror" name="alamat" rows="5" placeholder="Masukkan Alamat">{{ old('alamat', $pegawai->alamat) }}</textarea>
-                        
-                        @error('alamat')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <label for="alamat_{{ $pegawai->id }}">Alamat</label>
+                        <textarea class="form-control" id="alamat_{{ $pegawai->id }}" name="alamat" rows="5" placeholder="Masukkan Alamat">{{ old('alamat', $pegawai->alamat) }}</textarea>
+                        <div class="invalid-feedback" id="alamatError_{{ $pegawai->id }}"></div>
                     </div>
                     <div class="form-group">
-                        <label for="jenis_kelamin">Jenis Kelamin</label>
-                        <select class="form-control @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin">
+                        <label for="jenis_kelamin_{{ $pegawai->id }}">Jenis Kelamin</label>
+                        <select class="form-control" id="jenis_kelamin_{{ $pegawai->id }}" name="jenis_kelamin">
                             <option value="">Pilih Jenis Kelamin</option>
                             <option value="Laki-laki" {{ old('jenis_kelamin', $pegawai->jenis_kelamin) == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
                             <option value="Perempuan" {{ old('jenis_kelamin', $pegawai->jenis_kelamin) == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                         </select>
-                        
-                        @error('jenis_kelamin')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <div class="invalid-feedback" id="jenis_kelaminError_{{ $pegawai->id }}"></div>
                     </div>
                     <div class="form-group">
-                        <label for="tanggal_lahir">Tanggal Lahir</label>
-                        <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir" value="{{ old('tanggal_lahir', $pegawai->tanggal_lahir) }}">
-                        
-                        @error('tanggal_lahir')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <label for="tanggal_lahir_{{ $pegawai->id }}">Tanggal Lahir</label>
+                        <input type="date" class="form-control" id="tanggal_lahir_{{ $pegawai->id }}" name="tanggal_lahir" value="{{ old('tanggal_lahir', $pegawai->tanggal_lahir) }}">
+                        <div class="invalid-feedback" id="tanggal_lahirError_{{ $pegawai->id }}"></div>
                     </div>
                     <div class="form-group">
-                        <label for="foto">Foto Pegawai</label>
-                        <input type="file" class="form-control @error('foto') is-invalid @enderror" name="foto">
-                        
-                        @error('foto')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <label for="foto_{{ $pegawai->id }}">Foto Pegawai</label>
+                        <input type="file" class="form-control" id="foto_{{ $pegawai->id }}" name="foto">
+                        <div class="invalid-feedback" id="fotoError_{{ $pegawai->id }}"></div>
                     </div>
                     
                     <div class="modal-footer">
@@ -102,3 +67,17 @@
         </div>
     </div>
 </div>
+
+<!-- External Script for SweetAlert and Toastr -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="{{ asset('assets/dashboard/js/validateEdit.js') }}"></script>
+
+<!-- Script for SweetAlert confirmation and toastr messages -->
+<script>
+    @if(session()->has('success'))
+        toastr.success('{{ session('success') }}', 'BERHASIL!'); 
+    @elseif(session()->has('error'))
+        toastr.error('{{ session('error') }}', 'GAGAL!'); 
+    @endif
+</script>

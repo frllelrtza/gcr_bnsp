@@ -9,6 +9,8 @@
   <link href="{{ asset('assets/dashboard/images/apple-touch-icon.png') }}" rel="apple-touch-icon">
   <link rel="stylesheet" href="{{ asset('/assets/dashboard/css/style-purple.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('/assets/dashboard/libs/apexcharts/dist/apexcharts.css') }}" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Include Chart.js -->
   <!-- SweetAlert2 CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.0/dist/sweetalert2.min.css">
   <!-- Toastr CSS -->
@@ -32,6 +34,7 @@
     </div>
   </div>
 
+  
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   
@@ -41,8 +44,6 @@
   <!-- Bootstrap JS (ensure jQuery is loaded before) -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   
-  <!-- Toastr -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
   
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -52,6 +53,5 @@
   <script src="{{ asset('/assets/dashboard/js/app.min.js') }}"></script>
   <script src="{{ asset('/assets/dashboard/js/sidebarmenu.js') }}"></script>
 
-</body>
 
 </html>

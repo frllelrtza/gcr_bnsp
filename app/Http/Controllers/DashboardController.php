@@ -7,13 +7,22 @@ use App\Models\Pegawai;
 
 class DashboardController extends Controller
 {
-    public function index()
-{
-    $totalPria = Pegawai::where('jenis_kelamin', 'Laki-laki')->count();
-    $totalWanita = Pegawai::where('jenis_kelamin', 'Perempuan')->count();
-    $totalKeseluruhan = Pegawai::count();
-    $pegawai = Pegawai::all();
+    public function index(Request $request)
+    {
+        $totalPria = Pegawai::where('jenis_kelamin', 'Laki-laki')->count();
+        $totalWanita = Pegawai::where('jenis_kelamin', 'Perempuan')->count();
+        $totalKeseluruhan = Pegawai::count();
+        $pegawai = Pegawai::all();
 
-    return view('dashboard.index', compact('totalPria', 'totalWanita', 'totalKeseluruhan','pegawai'));
-}
+        if ($request->ajax()) {
+            return response()->json([
+                'totalPria' => $totalPria,
+                'totalWanita' => $totalWanita,
+                'totalKeseluruhan' => $totalKeseluruhan,
+                'pegawai' => $pegawai,
+            ]);
+        }
+
+        return view('dashboard.index', compact('totalPria', 'totalWanita', 'totalKeseluruhan', 'pegawai'));
+    }
 }
