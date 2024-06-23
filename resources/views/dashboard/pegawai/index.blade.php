@@ -105,26 +105,26 @@
     @endif
 
     document.addEventListener('DOMContentLoaded', function () {
-        // Event listener for delete buttons
-        document.querySelectorAll('.deleteButton').forEach(function (button) {
-            button.addEventListener('click', function () {
-                var id = this.getAttribute('data-id');
-                Swal.fire({
-                    title: 'Delete?',
-                    text: "Are you sure you want to delete this data?",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#3085d6',
-                    confirmButtonText: 'Yes, delete it!',
-                    cancelButtonText: 'Cancel'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('deleteForm_' + id).submit();
-                    }
+            // Event listener for delete buttons
+            document.querySelectorAll('.deleteButton').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var id = this.getAttribute('data-id');
+                    Swal.fire({
+                        title: 'Delete?',
+                        text: "Are you sure you want to delete this data?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Yes, delete it!',
+                        cancelButtonText: 'Cancel'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById('deleteForm_' + id).submit();
+                        }
+                    });
                 });
             });
         });
-    });
 </script>
 @endsection

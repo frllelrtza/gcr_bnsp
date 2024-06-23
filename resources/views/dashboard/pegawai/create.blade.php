@@ -18,121 +18,64 @@
                     @csrf <!-- CSRF Token -->
                     <div class="form-group">
                         <label for="nama">Nama Pegawai</label>
-                        <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" placeholder="Masukkan Nama Pegawai" autocomplete="off">
-                        
-                        @error('nama')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama Pegawai" autocomplete="off">
+                        <div class="invalid-feedback" id="namaError"></div>
                     </div>
                     <div class="form-group">
                         <label for="jabatan">Jabatan</label>
-                        <input type="text" class="form-control @error('jabatan') is-invalid @enderror" name="jabatan" value="{{ old('jabatan') }}" placeholder="Masukkan Jabatan" autocomplete="off">
-                        
-                        @error('jabatan')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Masukkan Jabatan" autocomplete="off">
+                        <div class="invalid-feedback" id="jabatanError"></div>
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Masukkan Email" autocomplete="off">
-                        
-                        @error('email')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email" autocomplete="off">
+                        <div class="invalid-feedback" id="emailError"></div>
                     </div>
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
-                        <textarea class="form-control @error('alamat') is-invalid @enderror" name="alamat" rows="3" placeholder="Masukkan Alamat" autocomplete="off">{{ old('alamat') }}</textarea>
-                        
-                        @error('alamat')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan Alamat" autocomplete="off"></textarea>
+                        <div class="invalid-feedback" id="alamatError"></div>
                     </div>
                     <div class="form-group">
                         <label for="jenis_kelamin">Jenis Kelamin</label>
-                        <select class="form-control @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin">
+                        <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
                             <option value="">Pilih Jenis Kelamin</option>
-                            <option value="Laki-laki" {{ old('jenis_kelamin') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                            <option value="Perempuan" {{ old('jenis_kelamin') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                            <option value="Laki-laki">Laki-laki</option>
+                            <option value="Perempuan">Perempuan</option>
                         </select>
-                        
-                        @error('jenis_kelamin')
-                            <div class="alert alert-danger mt-2">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="tanggal_lahir">Tanggal Lahir</label>
-                            <input type="date" class="form-control @error('tanggal_lahir') is-invalid @enderror" name="tanggal_lahir" value="{{ old('tanggal_lahir') }}" autocomplete="off">
-                            
-                            @error('tanggal_lahir')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="foto">Foto Pegawai</label>
-                            <input type="file" class="form-control @error('foto') is-invalid @enderror" name="foto" autocomplete="off">
-                            
-                            @error('foto')
-                                <div class="alert alert-danger mt-2">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </div>
-                    </form>
-                </div>
+                        <div class="invalid-feedback" id="jenis_kelaminError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tanggal_lahir">Tanggal Lahir</label>
+                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" autocomplete="off">
+                        <div class="invalid-feedback" id="tanggal_lahirError"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="foto">Foto Pegawai</label>
+                        <input type="file" class="form-control" id="foto" name="foto" autocomplete="off">
+                        <div class="invalid-feedback" id="fotoError"></div>
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    
-    <!-- External Script for SweetAlert and Toastr -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    
-    <!-- Script for SweetAlert confirmation and toastr messages -->
-    <script>
-        @if(session()->has('success'))
-            toastr.success('{{ session('success') }}', 'BERHASIL!'); 
-        @elseif(session()->has('error'))
-            toastr.error('{{ session('error') }}', 'GAGAL!'); 
-        @endif
-    
-        document.addEventListener('DOMContentLoaded', function () {
-            // Event listener for delete buttons
-            document.querySelectorAll('.deleteButton').forEach(function (button) {
-                button.addEventListener('click', function () {
-                    var id = this.getAttribute('data-id');
-                    Swal.fire({
-                        title: 'Delete?',
-                        text: "Are you sure you want to delete this data?",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#d33',
-                        cancelButtonColor: '#3085d6',
-                        confirmButtonText: 'Yes, delete it!',
-                        cancelButtonText: 'Cancel'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            document.getElementById('deleteForm_' + id).submit();
-                        }
-                    });
-                });
-            });
-        });
-    </script>
+</div>
+
+<!-- External Script for SweetAlert and Toastr -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="{{ asset('assets/dashboard/js/validateCreate.js') }}"></script>
+
+<!-- Script for SweetAlert confirmation and toastr messages -->
+<script>
+    @if(session()->has('success'))
+        toastr.success('{{ session('success') }}', 'BERHASIL!'); 
+    @elseif(session()->has('error'))
+        toastr.error('{{ session('error') }}', 'GAGAL!'); 
+    @endif
+</script>
